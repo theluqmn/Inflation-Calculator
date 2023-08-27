@@ -8,11 +8,11 @@ int main() {
     scanf(" %f", &itemPrice);
 
     int action;
-    printf("[1] Check future price with Rule 72 [2] Find out the old prices\n-> ");
+    printf("\n[1] Check future price with Rule 72 [2] Find out the old prices\n-> ");
     scanf(" %d", &action);
 
     int inflationYears;
-    printf("Find out price in # years?\n-> ");
+    printf("\nFind out price in # years?\n-> ");
     scanf(" %d", &inflationYears);
 
     if (action == 1) {
@@ -25,7 +25,7 @@ int main() {
             priceFuture += (priceFuture * 0.045);
         }
 
-        printf("Total price after %d years: %f\n", inflationYears, priceFuture);
+        printf("\nTotal price after %d years: %f\n", inflationYears, priceFuture);
     } else {
 
         float pricePast = itemPrice;
@@ -36,7 +36,7 @@ int main() {
             pricePast -= (pricePast * 0.045);
         }
         
-        printf("Total price %d years prior: %f\n", inflationYears, pricePast);
+        printf("\nTotal price %d years prior: %f\n", inflationYears, pricePast);
     }
 
     return 0;
