@@ -1,22 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+//Main function
 int main() {
-    //  User Input: Price of item
-    float itemPrice;
+    float itemPrice; //Price of item
     printf("Enter the price for this purchase?\n-> ");
     scanf(" %f", &itemPrice);
 
-    int action;
+    int action; //Find future or past prices
     printf("\n[1] Check future price with Rule 72 [2] Find out the old prices\n-> ");
     scanf(" %d", &action);
 
-    int inflationYears;
+    int inflationYears; //Years in the future
     printf("\nFind out price in # years?\n-> ");
     scanf(" %d", &inflationYears);
 
-    if (action == 1) {
-
+    if (action == 1) { // Calculating the future price
         float priceFuture = itemPrice;
 
         // Add inflation rate for every year
@@ -26,7 +25,8 @@ int main() {
         }
 
         printf("\nTotal price after %d years: %f\n", inflationYears, priceFuture);
-    } else {
+
+    } else { //Calculating the past price
 
         float pricePast = itemPrice;
         
