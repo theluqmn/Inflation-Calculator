@@ -4,7 +4,7 @@
 // Main function
 int main() {
     printf("\n-------------------------\n");
-    printf("Inflation + Tax Calculator\nhttps://github.com/luqmanually/inflation-calculator\n");
+    printf("Inflation + Tax Calculator\nhttps://github.com/luqmanually/Inflation-Calculator\n");
     printf("-------------------------\n");
 
     double itemPrice; //Price of item
