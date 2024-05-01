@@ -9,16 +9,6 @@ An inflation calculator
 - Enter 1 to find future prices, 2 to find past prices
 - Enter the year you want to know the price in
 
-### Example
-
-If you enter the following information:
-
-- Price: $100
-- Year paid: 2022
-- Year you want to know the price in: 2023
-
-The output will be $104.50.
-
 ## How it works
 
 With provided inputs, it calculates the price of the item in the past or future
