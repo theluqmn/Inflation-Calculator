@@ -1,2 +1,5 @@
 vscode/
 main.c
+test.c
+*.exe
+.env

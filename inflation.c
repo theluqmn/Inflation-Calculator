@@ -1,42 +1,81 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//Main function
+// Main function
 int main() {
-    float itemPrice; //Price of item
-    printf("Enter the price for this purchase?\n-> ");
-    scanf(" %f", &itemPrice);
+    printf("\n-------------------------\n");
+    printf("Inflation + Tax Calculator\nhttps://github.com/luqmanually/inflation-calculator\n");
+    printf("-------------------------\n");
 
-    int action; //Find future or past prices
-    printf("\n[1] Check future price with Rule 72 [2] Find out the old prices\n-> ");
-    scanf(" %d", &action);
+    double itemPrice; //Price of item
+    printf("\nEnter the price of the item: ");
+    scanf("%lf", &itemPrice);
 
-    int inflationYears; //Years in the future
-    printf("\nFind out price in # years?\n-> ");
-    scanf(" %d", &inflationYears);
+    double taxRate; //Tax rate
+    printf("Enter the tax rate: ");
+    scanf("%lf", &taxRate);
 
-    if (action == 1) { // Calculating the future price
-        float priceFuture = itemPrice;
+    if (itemPrice < 0) { // Check if item price is valid
+        printf("Invalid input. Price must be greater than or equal to 0.\n");
+        return 1;
+    }
 
-        // Add inflation rate for every year
-        int i;
-        for (i = 1; i <= inflationYears; i++) {
-            priceFuture += (priceFuture * 0.045);
-        }
+    if (taxRate < 0 || taxRate > 100) { // Check if tax rate is valid
+        printf("Invalid input. Tax rate must be between 0 and 100.\n");
+        return 1;
+    }
 
-        printf("\nTotal price after %d years: %f\n", inflationYears, priceFuture);
+    // Calculate tax amount and total amount
+    double taxAmount = itemPrice * taxRate / 100;
+    double totalAmount = itemPrice + taxAmount;
 
-    } else { //Calculating the past price
+    printf("Item Price after tax: %.2lf\n", totalAmount);
 
-        float pricePast = itemPrice;
-        
-        // Deducts inflation rate for every months
-        int i;
-        for (i = 1; i <= inflationYears; i++) {
-            pricePast -= (pricePast * 0.045);
-        }
-        
-        printf("\nTotal price %d years prior: %f\n", inflationYears, pricePast);
+    int calculationType; // Find future or past prices
+    printf("\nEnter 1 to find future prices or 2 to find past prices: ");
+    scanf("%d", &calculationType);
+
+    if(calculationType != 1 && calculationType != 2) { // Check if calculation type is valid
+        printf("Invalid input. Please enter 1 or 2.\n");
+        return 1;
+    }
+
+    int inflationYears; // Number of years for inflation
+    printf("Enter the number of years for inflation: ");
+    scanf("%d", &inflationYears);
+
+    if (inflationYears < 0) { // Check if inflation years are valid
+        printf("Invalid input. Inflation years must be greater than or equal to 0.\n");
+        return 1;
+    }
+
+    // Set price to after tax
+    double price = totalAmount;
+
+    switch (calculationType) {
+
+        case 1: // Future prices
+            price = itemPrice;
+
+            // Add inflation rate for every year
+            int i;
+            for (i = 1; i <= inflationYears; i++) {
+                price += (price * 0.045);
+            };
+
+            printf("\nTotal price after %d years of inflation: %.2lf\n", inflationYears, price);
+            break;
+
+        case 2: // Past prices
+            price = itemPrice;
+
+            // Subtract inflation rate for every year
+            for (i = 1; i <= inflationYears; i++) {
+                price -= (price * 0.045);
+            };
+
+            printf("\nTotal price %d years prior to inflation: %.2lf\n", inflationYears, price);
+            break;
     }
 
     return 0;

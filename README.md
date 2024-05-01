@@ -1,14 +1,23 @@
 # Inflation Calculator
 
-This is my first project made with C!
-`cleanup.py` is something I made to get rid of those pdb and other files
-generated after compiling.
+An inflation calculator
 
 ## Instructions
 
-- Enter the price for purchase
-- Select between option 1 (check price in the future) or option 2 (check price in the past)
-- Enter how many years in the past/future (depends on Step 2)
+- Enter the price of the item
+- Enter the tax rate
+- Enter 1 to find future prices, 2 to find past prices
+- Enter the year you want to know the price in
+
+### Example
+
+If you enter the following information:
+
+- Price: $100
+- Year paid: 2022
+- Year you want to know the price in: 2023
+
+The output will be $104.50.
 
 ## How it works
 
